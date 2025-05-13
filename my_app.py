@@ -1,13 +1,10 @@
+from instr import *
 from PyQt5.QtCore import Qt 
 from PyQt5.QtWidgets import(
     QApplication, QWidget,
     QHBoxLayout, QVBoxLayout,
     QGroupBox, QRadioButton,
     QPushButton, QLabel, QListWidget, QLineEdit)
-
-txt_title = 'Здоровье'
-win_x, win_y = 200, 100
-win_width, win_height = 1000, 600
 from second_win import *
 class MainWin(QWidget):
     def __init__(self):
@@ -27,6 +24,14 @@ class MainWin(QWidget):
         self.setLayout(self.layout_line)
     def next_click(self):
         self.hide()
-        self.fw = FinaWin()
+        self.fw = TestWin()
     def connects(self):
         self.bnt_next.clicked.connect(self.next_click)
+    def set_appear(self):
+        self.setWindowTitle(txt_title)
+        self.resize(win_width, win_height)
+        self.move(win_x, win_y)
+
+app = QApplication([])
+mw = MainWin()
+app.exec_()
